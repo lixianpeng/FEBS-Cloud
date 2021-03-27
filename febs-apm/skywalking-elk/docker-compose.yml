@@ -4,7 +4,7 @@ services:
   elasticsearch:
     image: elasticsearch:6.4.1
     container_name: elasticsearch
-    restart: always
+#    restart: always
     environment:
       - cluster.name=elasticsearch
       - xpack.security.enabled=false
@@ -12,9 +12,9 @@ services:
       - node.name=elasticsearch_node_1
       - "TZ=Asia/Shanghai"
     volumes:
-      - /febs/elasticsearch/data:/usr/share/elasticsearch/data
-      - /febs/elasticsearch/logs:/usr/share/elasticsearch/logs
-      - /febs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - E:\febs\elasticsearch\data:/usr/share/elasticsearch/data
+      - E:\febs\elasticsearch\logs:/usr/share/elasticsearch/logs
+      - E:\febs\elasticsearch\elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - 9200:9200
       - 9300:9300
@@ -33,7 +33,7 @@ services:
     image: logstash:6.4.1
     container_name: logstash
     volumes:
-      - /febs/logstash/logstash-febs.conf:/usr/share/logstash/pipeline/logstash.conf
+      - E:\febs\logstash\logstash-febs.conf:/usr/share/logstash/pipeline/logstash.conf
     depends_on:
       - elasticsearch
     links:
@@ -47,14 +47,14 @@ services:
       - elasticsearch
     links:
       - elasticsearch
-    restart: always
+#    restart: always
     ports:
       - 11800:11800
       - 12800:12800
     environment:
       - "TZ=Asia/Shanghai"
     volumes:
-      - /febs/skywalking/config:/apache-skywalking-apm-bin/config:ro
+      - E:\febs\skywalking\config:/apache-skywalking-apm-bin/config:ro
 
   skywalking-ui:
     image: apache/skywalking-ui:6.4.0
@@ -63,7 +63,7 @@ services:
       - skywalking-oap
     links:
       - skywalking-oap
-    restart: always
+#    restart: always
     ports:
       - 8080:8080
     environment:

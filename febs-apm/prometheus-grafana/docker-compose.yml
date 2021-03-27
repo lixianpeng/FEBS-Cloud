@@ -5,10 +5,10 @@ services:
     image: prom/prometheus
     container_name: prometheus
     volumes:
-      - /febs/prometheus/:/etc/prometheus/
+      - E:\febs\prometheus\:/etc/prometheus/
     ports:
       - 8403:9090
-    restart: on-failure
+#    restart: on-failure
   node_exporter:
     image: prom/node-exporter
     container_name: node_exporter
@@ -22,7 +22,7 @@ services:
       - '--redis.password=password'
     ports:
       - 8408:9121
-    restart: on-failure
+#    restart: on-failure
   mysql_exporter:
     image: prom/mysqld-exporter
     container_name: mysql_exporter
@@ -34,17 +34,17 @@ services:
     image: google/cadvisor
     container_name: cadvisor
     volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
+      - E:\febs\:/rootfs:ro
+      - E:\febs\var\run:/var/run:rw
+      - E:\febs\sys:/sys:ro
+      - E:\febs\var\lib\docker/:/var/lib/docker:ro
     ports:
       - 8407:8080
   alertmanager:
     image: prom/alertmanager
     container_name: alertmanager
     volumes:
-      - /febs/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - E:\febs\alertmanager\alertmanager.yml:/etc/alertmanager/alertmanager.yml
     ports:
       - 8406:9093
   grafana:

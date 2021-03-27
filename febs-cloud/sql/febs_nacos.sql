@@ -1,3 +1,5 @@
+create database febs_nacos;
+use  febs_nacos;
 /*
  Navicat Premium Data Transfer
 

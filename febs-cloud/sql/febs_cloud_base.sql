@@ -1,3 +1,6 @@
+create database febs_cloud_base;
+use  febs_cloud_base;
+
 /*
  Navicat Premium Data Transfer
 
